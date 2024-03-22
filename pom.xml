@@ -16,6 +16,7 @@
         <module>common</module>
         <module>service-client</module>
         <module>user-service</module>
+        <module>business-service</module>
     </modules>
 
     <!-- 属性 -->
