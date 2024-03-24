@@ -1,0 +1,6 @@
+spring:
+  cloud:
+    # nacos地址
+    nacos:
+      discovery:
+        server-addr: 192.168.201.130:8848

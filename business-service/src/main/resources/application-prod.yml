@@ -1,8 +1,6 @@
 spring:
   application:
-    name: busniess-service
-  profiles:
-    active: dev
+    name: business-service
   # swagger3
   mvc:
     pathmatch:
@@ -15,16 +13,16 @@ spring:
   # 数据库
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/springcloud_demo
+    url: jdbc:mysql://localhost:3307/springcloud_demo
     username: root
-    password: yhx
+    password: 123456
   servlet:
     multipart:
       max-file-size: 10MB
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
+        server-addr: 192.168.201.130:8848
   # Redis
   data:
     redis:
@@ -32,6 +30,7 @@ spring:
       host: localhost
       port: 6379
       timeout: 5000
+      password: yinhongxi
 server:
   address: 0.0.0.0
   port: 8103

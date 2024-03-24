@@ -64,7 +64,7 @@
 
     </dependencies>
 
-
+    <!-- 添加了这个以后才会打包成一个jar包 -->
     <build>
         <plugins>
             <plugin>

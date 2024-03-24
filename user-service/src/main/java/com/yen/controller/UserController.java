@@ -31,6 +31,16 @@ public class UserController {
     private UserService userService;
 
     /**
+     * 你好
+     *
+     * @return {@link BaseResponse}<{@link String}>
+     */
+    @GetMapping("/hello")
+    public BaseResponse<String> hello(){
+        return ResultUtils.success("你好");
+    }
+
+    /**
      * 用户注册
      *
      * @param userRegisterRequest
