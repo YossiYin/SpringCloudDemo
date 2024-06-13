@@ -1,5 +1,6 @@
 package com.yen.controller;
 
+import cn.hutool.crypto.digest.MD5;
 import com.alibaba.nacos.common.utils.StringUtils;
 import com.yen.common.BaseResponse;
 import com.yen.common.ErrorCode;
@@ -8,6 +9,7 @@ import com.yen.dto.user.UserLoginRequest;
 import com.yen.dto.user.UserRegisterRequest;
 import com.yen.entity.User;
 import com.yen.exception.BusinessException;
+import com.yen.service.BaiduFeignClient;
 import com.yen.service.UserService;
 import com.yen.vo.LoginUserVO;
 import jakarta.annotation.Resource;
@@ -30,6 +32,9 @@ public class UserController {
     @Resource
     private UserService userService;
 
+    @Resource
+    private BaiduFeignClient baiduFeignClient;
+
     /**
      * 你好
      *
@@ -37,7 +42,23 @@ public class UserController {
      */
     @GetMapping("/hello")
     public BaseResponse<String> hello(){
-        return ResultUtils.success("你好");
+        String q = "i like apples";
+        String from = "en";
+        String to = "zh";
+        String appid = "20230910001811291";
+        String salt = "1678350285";
+        String key = "VFjHVYrt_Y5uI5nbI_ye";
+        // appid+q+salt+密钥拼接成的字符串做MD5得到32位小写的sign
+        String s = appid + q + salt + key;
+        String sign = MD5.create().digestHex(s);
+        System.out.println("s =" + s);
+        System.out.println("sign = " + sign);
+
+        // 测试feign调用第三方接口
+        String resultGet = baiduFeignClient.translate(q, from, to, appid, salt,sign);
+        System.out.println("resultGet = " + resultGet);
+
+        return ResultUtils.success(resultGet);
     }
 
     /**
