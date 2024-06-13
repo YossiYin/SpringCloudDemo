@@ -12,6 +12,8 @@ spring:
     store-type: redis
     # 30天
     timeout: 2592000
+    redis:
+      namespace: cloud-demo # 设置key值
   # 数据库
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
