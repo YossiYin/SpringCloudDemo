@@ -27,6 +27,12 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+        <!-- knife4j:本模块主要用于引入swagger注解 -->
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+            <version>4.4.0</version>
+        </dependency>
     </dependencies>
 
 </project>

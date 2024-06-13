@@ -51,5 +51,10 @@ mybatis-plus:
       logic-delete-field: isDelete
       logic-delete-value: 1
       logic-not-delete-value: 0
+
+# 关闭接口文档
 knife4j:
-  enable: true
+  enable: false
+springdoc:
+  api-docs:
+    enabled: false

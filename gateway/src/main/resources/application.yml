@@ -18,14 +18,17 @@ spring:
     web-application-type: reactive
 server:
   port: 8101 # 网关端口
+
+# knife4j网关聚合接口文档,生产环境请关闭
 knife4j:
   gateway:
     # ① 第一个配置，开启gateway聚合组件
     enabled: true
-    # ② 第二行配置，设置聚合模式采用discover服务发现的模式
+    # ② 第二行配置，设置聚合模式采用discover服务发现的模式，开启后可无需手动配置子服务路由
     strategy: discover
     discover:
       # ③ 第三行配置，开启discover模式
       enabled: true
-      # ④ 第四行配置，聚合子服务全部为Swagger2规范的文档
-      version: swagger2
+      # ④ 第四行配置，聚合子服务全部为openapi3规范的文档,springboot3只支持openapi3
+      version: openapi3
+      # 可配置需要排除的微服务(excluded-services:)
