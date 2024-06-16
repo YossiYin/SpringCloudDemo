@@ -1,5 +1,7 @@
 package com.yen.common;
 
+import static com.yen.common.ErrorCode.SUCCESS;
+
 /**
  * 返回工具类
  *
@@ -14,7 +16,7 @@ public class ResultUtils {
      * @return
      */
     public static <T> BaseResponse<T> success(T data) {
-        return new BaseResponse<>(200, data, "ok");
+        return new BaseResponse<>(SUCCESS.getCode(), data, "ok");
     }
 
     /**
