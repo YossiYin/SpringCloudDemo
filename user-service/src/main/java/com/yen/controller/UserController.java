@@ -5,11 +5,13 @@ import com.alibaba.nacos.common.utils.StringUtils;
 import com.yen.common.BaseResponse;
 import com.yen.common.ErrorCode;
 import com.yen.common.ResultUtils;
+import com.yen.dto.other.TestResponse;
 import com.yen.dto.user.UserLoginRequest;
 import com.yen.dto.user.UserRegisterRequest;
 import com.yen.entity.User;
 import com.yen.exception.BusinessException;
 import com.yen.service.BaiduFeignClient;
+import com.yen.service.TestFeignClient;
 import com.yen.service.UserService;
 import com.yen.vo.LoginUserVO;
 import jakarta.annotation.Resource;
@@ -31,6 +33,9 @@ public class UserController {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private TestFeignClient testFeignClient;
 
     @Resource
     private BaiduFeignClient baiduFeignClient;
@@ -59,6 +64,16 @@ public class UserController {
         System.out.println("resultGet = " + resultGet);
 
         return ResultUtils.success(resultGet);
+    }
+
+    @GetMapping("/hello2")
+    public BaseResponse<Object> hello2(){
+
+        // 测试feign调用第三方接口
+        TestResponse testResponse = testFeignClient.test2("36");
+        System.out.println("resultGet = " + testResponse);
+
+        return ResultUtils.success(testResponse);
     }
 
     /**
